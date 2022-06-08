@@ -1,3 +1,4 @@
+import 'package:evaluacion_docente/headears/headers_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,10 +8,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('HomeScreen'),
-      ),
-    );
+    return const Scaffold(body: HeadearPrincipal());
   }
 }
