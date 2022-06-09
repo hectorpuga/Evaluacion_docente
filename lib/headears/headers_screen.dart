@@ -5,11 +5,59 @@ class HeadearPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xff27333E),
-      height: double.infinity,
-      width: double.infinity,
-      child: CustomPaint(painter: _HeadearPrincipalPainter()),
+    final size = MediaQuery.of(context).size;
+    return Stack(
+      children: [
+        Container(
+          color: const Color(0xff27333E),
+          height: double.infinity,
+          width: double.infinity,
+          child: CustomPaint(painter: _HeadearPrincipalPainter()),
+        ),
+        Positioned(
+          top: size.height * 0.01,
+          child: SizedBox(
+              height: size.height * 0.1,
+              width: size.width * 0.2,
+              child: const Image(
+                image: AssetImage('assets/images/LogoSecretaria.png'),
+                fit: BoxFit.contain,
+              )),
+        ),
+        Positioned(
+          right: size.width * 0.31,
+          child: Column(children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              'SISTEMA DE EVALUACIÓN DOCENTE',
+              style: TextStyle(
+                  fontSize: size.width * 0.025,
+                  color: const Color(0xffE3BC3A),
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'INSTITUTO TECNOLÓGICO SUPERIOR DE EL MANTE',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.width * 0.015,
+                  color: const Color.fromARGB(255, 255, 255, 255)),
+            )
+          ]),
+        ),
+        Positioned(
+          top: size.height * 0.01,
+          right: size.height * 0.04,
+          child: SizedBox(
+              height: size.height * 0.1,
+              width: size.width * 0.2,
+              child: const Image(
+                image: AssetImage('assets/images/LogoTec.png'),
+                fit: BoxFit.contain,
+              )),
+        ),
+      ],
     );
   }
 }
