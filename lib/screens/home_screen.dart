@@ -1,8 +1,9 @@
 import 'package:evaluacion_docente/headears/headers_screen.dart';
+import 'package:evaluacion_docente/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const name = 'home-screen';
+  static const name = 'HomeScreen';
 
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -26,15 +27,19 @@ class HomeScreen extends StatelessWidget {
                       image: AssetImage('assets/images/Administrador.png'),
                       fit: BoxFit.fill,
                     )),
-                onTap: () => {},
+                onTap: () =>
+                    {Navigator.pushNamed(context, AdministradorScreen.name)},
               ),
-              SizedBox(
-                  width: size.width * 0.15,
-                  height: size.height * 0.2,
-                  child: const Image(
-                    image: AssetImage('assets/images/Usuarios.png'),
-                    fit: BoxFit.fill,
-                  )),
+              GestureDetector(
+                  child: SizedBox(
+                      width: size.width * 0.15,
+                      height: size.height * 0.2,
+                      child: const Image(
+                        image: AssetImage('assets/images/Usuarios.png'),
+                        fit: BoxFit.fill,
+                      )),
+                  onTap: () =>
+                      {Navigator.pushNamed(context, UsuarioScreen.name)}),
             ],
           ))
     ]));
