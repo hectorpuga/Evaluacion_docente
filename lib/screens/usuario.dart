@@ -1,7 +1,8 @@
 import 'package:evaluacion_docente/headears/headers_screen.dart';
+import 'package:evaluacion_docente/screens/screens.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/login_form.dart';
+import '../widgets/login.dart';
 
 class UsuarioScreen extends StatelessWidget {
   static const String name = 'UsuarioScreen';
@@ -18,9 +19,10 @@ class UsuarioScreen extends StatelessWidget {
             top: size.height * 0.58,
             left: size.width * 0.32,
             child: LoginForm(
+              ruta: CuestionarioScreen.name,
               hintText1: 'Usuario',
-              color: Color(0xff14A0FF),
-              image: SizedBox(
+              color: const Color(0xff14A0FF),
+              image: const SizedBox(
                 height: 50,
                 width: 340,
                 child: Image(

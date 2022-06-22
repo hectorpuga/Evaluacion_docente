@@ -4,9 +4,11 @@ class LoginForm extends StatelessWidget {
   final Widget image;
   final String hintText1;
   final Color color;
+  final String ruta;
 
   const LoginForm({
     required this.color,
+    required this.ruta,
     Key? key,
     required this.image,
     required this.hintText1,
@@ -50,7 +52,7 @@ class LoginForm extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     labelText: hintText1,
-                    labelStyle: TextStyle(color: Colors.white)),
+                    labelStyle: const TextStyle(color: Colors.white)),
               ),
             ),
             SizedBox(
@@ -70,9 +72,12 @@ class LoginForm extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(left: 180),
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: color),
-                  onPressed: () {},
-                  child: const Text('Iniciar sesión')),
+                style: ElevatedButton.styleFrom(primary: color),
+                child: const Text('Iniciar sesión'),
+                onPressed: () {
+                  Navigator.pushNamed(context, ruta);
+                },
+              ),
             ),
             SizedBox(
                 child: TextButton(

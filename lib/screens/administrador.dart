@@ -1,5 +1,5 @@
 import 'package:evaluacion_docente/headears/headers_screen.dart';
-import 'package:evaluacion_docente/widgets/login_form.dart';
+import 'package:evaluacion_docente/widgets/login.dart';
 import 'package:flutter/material.dart';
 
 class AdministradorScreen extends StatelessWidget {
@@ -16,7 +16,8 @@ class AdministradorScreen extends StatelessWidget {
         Positioned(
             top: size.height * 0.58,
             left: size.width * 0.32,
-            child: LoginForm(
+            child: const LoginForm(
+              ruta: "",
               hintText1: 'Usuario',
               color: Color(0xffDCB63A),
               image: SizedBox(
