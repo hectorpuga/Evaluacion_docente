@@ -1,6 +1,7 @@
 import 'package:evaluacion_docente/headears/headers_screen.dart';
 import 'package:evaluacion_docente/screens/screens.dart';
 import 'package:flutter/material.dart';
+import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'HomeScreen';
@@ -18,28 +19,14 @@ class HomeScreen extends StatelessWidget {
           right: size.width * 0.41,
           top: size.height * 0.58,
           child: Row(
-            children: [
-              GestureDetector(
-                child: SizedBox(
-                    width: size.width * 0.15,
-                    height: size.height * 0.2,
-                    child: const Image(
-                      image: AssetImage('assets/images/Administrador.png'),
-                      fit: BoxFit.fill,
-                    )),
-                onTap: () =>
-                    {Navigator.pushNamed(context, AdministradorScreen.name)},
+            children: const [
+              OpcionesHome(
+                pathImage: 'assets/images/Administrador.png',
+                pathRuta: AdministradorLogin.name,
               ),
-              GestureDetector(
-                  child: SizedBox(
-                      width: size.width * 0.15,
-                      height: size.height * 0.2,
-                      child: const Image(
-                        image: AssetImage('assets/images/Usuarios.png'),
-                        fit: BoxFit.fill,
-                      )),
-                  onTap: () =>
-                      {Navigator.pushNamed(context, UsuarioScreen.name)}),
+              OpcionesHome(
+                  pathImage: 'assets/images/Usuarios.png',
+                  pathRuta: UsuarioScreen.name),
             ],
           ))
     ]));

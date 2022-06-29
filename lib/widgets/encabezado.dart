@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../services/login_users.dart';
 
 class Encabezado extends StatelessWidget {
-  const Encabezado({Key? key}) : super(key: key);
+  final String pregunta;
+  final String numP;
+  const Encabezado({Key? key, required this.pregunta, required this.numP})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final usuarioAunth = Provider.of<LoginUser>(context);
     Color color = Colors.white;
     TextStyle estilo = const TextStyle(color: Colors.white, fontSize: 15);
     final opciones = [
@@ -19,7 +26,7 @@ class Encabezado extends StatelessWidget {
       height: 200,
       width: 700,
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Text("Héctor Donaldo Maldona Gómez", style: estilo),
+        Text(usuarioAunth.usuarioAuth!.usuario.nombre, style: estilo),
         Divider(
           color: color,
           height: 20,
@@ -33,18 +40,18 @@ class Encabezado extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              adornoCuadrado(
+              _adornoCuadrado(
                 15,
                 15,
                 2,
-                "1",
+                numP,
               ),
               Text("Pregunta de", style: estilo),
-              adornoCuadrado(15, 15, 2, "48")
+              _adornoCuadrado(15, 15, 2, "48")
             ],
           ),
         ),
-        adornoCuadrado(50, 500, 5, ""),
+        _adornoCuadrado(50, 500, 5, pregunta),
         const SizedBox(
           height: 15,
         ),
@@ -52,7 +59,7 @@ class Encabezado extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             for (int i = 0; i < opciones.length; i++)
-              adornoCuadrado(15, 15, 10, '${i + 1}', opcion: opciones[i]),
+              _adornoCuadrado(15, 15, 10, '${i + 1}', opcion: opciones[i]),
           ],
         )
       ]),
@@ -60,7 +67,7 @@ class Encabezado extends StatelessWidget {
   }
 }
 
-adornoCuadrado(double heigh, double width, double round, String text,
+_adornoCuadrado(double heigh, double width, double round, String text,
     {opcion = ''}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +77,7 @@ adornoCuadrado(double heigh, double width, double round, String text,
         width: width,
         decoration: BoxDecoration(
             gradient: width > 150
-                ? LinearGradient(colors: [
+                ? const LinearGradient(colors: [
                     Color(0xff3B3B3B),
                     Color(0xffAAAAAA),
                   ])
@@ -80,8 +87,10 @@ adornoCuadrado(double heigh, double width, double round, String text,
         child: Center(
             child: Text(
           text,
-          style: const TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
+          style: TextStyle(
+              color: width > 100
+                  ? Color.fromARGB(255, 252, 252, 252)
+                  : const Color.fromARGB(255, 0, 0, 0),
               fontSize: 13,
               fontWeight: FontWeight.bold),
         )),
@@ -98,5 +107,4 @@ adornoCuadrado(double heigh, double width, double round, String text,
         ),
     ],
   );
-  ;
 }

@@ -25,7 +25,7 @@ class HeadearPrincipal extends StatelessWidget {
               )),
         ),
         Positioned(
-          right: size.width * 0.31,
+          right: size.width * 0.29,
           child: Column(children: [
             const SizedBox(
               height: 20,

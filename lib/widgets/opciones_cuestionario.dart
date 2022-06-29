@@ -2,13 +2,16 @@ import 'package:evaluacion_docente/providers/respuestas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Opciones extends StatelessWidget {
-  const Opciones({Key? key}) : super(key: key);
+import '../services/login_users.dart';
+
+class OpcionesCuestionario extends StatelessWidget {
+  const OpcionesCuestionario({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Color color = Colors.white;
     final respuestas = Provider.of<RespuestasProvider>(context);
+    final usuarioAunth = Provider.of<LoginUser>(context);
     return SizedBox(
       width: 160,
       height: 400,
@@ -16,7 +19,7 @@ class Opciones extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: 8),
+            margin: const EdgeInsets.only(bottom: 8),
             child: Text(
               'Calificación',
               style: TextStyle(
@@ -39,7 +42,9 @@ class Opciones extends StatelessWidget {
                 )
             ],
           ),
-          for (int i = 1; i < 9; i++)
+          for (int i = 0;
+              i < usuarioAunth.usuarioAuth!.usuario.maestros.length;
+              i++)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -52,9 +57,9 @@ class Opciones extends StatelessWidget {
                       if (states.contains(MaterialState.disabled)) color;
                       return Colors.white;
                     }),
-                    groupValue: respuestas.opciones['$i'],
+                    groupValue: respuestas.opciones['${i + 1}'],
                     onChanged: (value) {
-                      respuestas.valorOpciones(value, '$i');
+                      respuestas.valorOpciones(value, '${i + 1}');
                     },
                   ),
               ],
